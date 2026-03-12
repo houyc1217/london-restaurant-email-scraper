@@ -16,32 +16,32 @@ import sys
 import time
 
 # ── Batch imports ──────────────────────────────────────────────────────────────
-from config_batch55 import SEARCH_QUERIES as B55
-from config_batch56 import SEARCH_QUERIES as B56
-from config_batch57 import SEARCH_QUERIES as B57
-from config_batch58 import SEARCH_QUERIES as B58
-from config_batch59 import SEARCH_QUERIES as B59
-from config_batch60 import SEARCH_QUERIES as B60
-from config_batch61 import SEARCH_QUERIES as B61
-from config_batch62 import SEARCH_QUERIES as B62
-from config_batch63 import SEARCH_QUERIES as B63
-from config_batch64 import SEARCH_QUERIES as B64
-from config_batch65 import SEARCH_QUERIES as B65
-from config_batch66 import SEARCH_QUERIES as B66
-from config_batch67 import SEARCH_QUERIES as B67
-from config_batch68 import SEARCH_QUERIES as B68
-from config_batch69 import SEARCH_QUERIES as B69
-from config_batch70 import SEARCH_QUERIES as B70
-from config_batch71 import SEARCH_QUERIES as B71
-from config_batch72 import SEARCH_QUERIES as B72
-from config_batch73 import SEARCH_QUERIES as B73
-from config_batch74 import SEARCH_QUERIES as B74
-from config_batch75 import SEARCH_QUERIES as B75
-from config_batch76 import SEARCH_QUERIES as B76
-from config_batch77 import SEARCH_QUERIES as B77
-from config_batch78 import SEARCH_QUERIES as B78
-from config_batch79 import SEARCH_QUERIES as B79
-from config_batch80 import SEARCH_QUERIES as B80
+from batches.config_batch55 import SEARCH_QUERIES as B55
+from batches.config_batch56 import SEARCH_QUERIES as B56
+from batches.config_batch57 import SEARCH_QUERIES as B57
+from batches.config_batch58 import SEARCH_QUERIES as B58
+from batches.config_batch59 import SEARCH_QUERIES as B59
+from batches.config_batch60 import SEARCH_QUERIES as B60
+from batches.config_batch61 import SEARCH_QUERIES as B61
+from batches.config_batch62 import SEARCH_QUERIES as B62
+from batches.config_batch63 import SEARCH_QUERIES as B63
+from batches.config_batch64 import SEARCH_QUERIES as B64
+from batches.config_batch65 import SEARCH_QUERIES as B65
+from batches.config_batch66 import SEARCH_QUERIES as B66
+from batches.config_batch67 import SEARCH_QUERIES as B67
+from batches.config_batch68 import SEARCH_QUERIES as B68
+from batches.config_batch69 import SEARCH_QUERIES as B69
+from batches.config_batch70 import SEARCH_QUERIES as B70
+from batches.config_batch71 import SEARCH_QUERIES as B71
+from batches.config_batch72 import SEARCH_QUERIES as B72
+from batches.config_batch73 import SEARCH_QUERIES as B73
+from batches.config_batch74 import SEARCH_QUERIES as B74
+from batches.config_batch75 import SEARCH_QUERIES as B75
+from batches.config_batch76 import SEARCH_QUERIES as B76
+from batches.config_batch77 import SEARCH_QUERIES as B77
+from batches.config_batch78 import SEARCH_QUERIES as B78
+from batches.config_batch79 import SEARCH_QUERIES as B79
+from batches.config_batch80 import SEARCH_QUERIES as B80
 
 ALL_QUERIES = (B55 + B56 + B57 + B58 + B59 + B60 + B61 + B62 + B63 + B64 +
                B65 + B66 + B67 + B68 + B69 + B70 + B71 + B72 + B73 + B74 +

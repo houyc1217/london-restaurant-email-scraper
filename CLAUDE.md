@@ -14,13 +14,14 @@ Scrapes Google Maps to build a marketing email list of London restaurants and ca
 ## Key Files
 
 ```
-run_to_1000.py          Worker script. One process per worker.
-run_overnight.py        Orchestrator. Start this to run everything.
-config_batch55-80.py    Search query batches (active/current).
-scraper_queue.jsonl     Shared work queue. One JSON object per line.
-MARKETING_LIST.csv      Output CSV. Deduped by Email column.
-requirements.txt        Python deps: selenium, beautifulsoup4, requests, lxml, webdriver-manager
-_archive/               Old files. Do not touch.
+run_to_1000.py              Worker script. One process per worker.
+run_overnight.py            Orchestrator. Start this to run everything.
+batches/config_batch55-80.py  Search query batches (active/current).
+batches/__init__.py         Makes batches/ a Python package.
+scraper_queue.jsonl         Shared work queue. One JSON object per line.
+MARKETING_LIST.csv          Output CSV. Deduped by Email column.
+requirements.txt            Python deps: selenium, beautifulsoup4, requests, lxml, webdriver-manager
+_archive/                   Old files. Do not touch.
 ```
 
 ## Current State
@@ -47,14 +48,14 @@ tail -f overnight.log           # live log
 
 ## How to Add More Queries (when queue runs out)
 
-1. Create `config_batchN.py` with:
+1. Create `batches/config_batchN.py` with:
 ```python
 SEARCH_QUERIES = [
     ("restaurants <area> London", "Restaurant", 60),
     ...
 ]
 ```
-2. Import it in `run_overnight.py` and add to `ALL_QUERIES`.
+2. Import it in `run_overnight.py` (`from batches.config_batchN import SEARCH_QUERIES as BN`) and add to `ALL_QUERIES`.
 
 ## Constraints
 

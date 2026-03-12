@@ -109,13 +109,16 @@ Then add it to the `run_overnight.py` import block and `ALL_QUERIES` list.
 ## Project Structure
 
 ```
-run_to_1000.py          # Worker script (one process per worker)
-run_overnight.py        # Orchestrator: loads queue, spawns workers, monitors
-config_batch55-80.py    # Search query lists (one batch = ~100-200 queries)
-scraper_queue.jsonl     # Shared work queue (JSONL, one query per line)
-MARKETING_LIST.csv      # Output data (deduped by email)
-requirements.txt        # Python dependencies
-_archive/               # Old/superseded files (kept for reference)
+run_to_1000.py              # Worker script (one process per worker)
+run_overnight.py            # Orchestrator: loads queue, spawns workers, monitors
+batches/                    # Search query batch configs
+  config_batch55.py         #   one batch = ~100-200 queries
+  ...
+  config_batch80.py
+scraper_queue.jsonl         # Shared work queue (JSONL, one query per line)
+MARKETING_LIST.csv          # Output data (deduped by email)
+requirements.txt            # Python dependencies
+_archive/                   # Old/superseded files (kept for reference)
 ```
 
 ## Notes

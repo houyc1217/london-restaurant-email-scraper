@@ -48,7 +48,7 @@ You need to either:
 
 ### Adding More Queries
 
-1. Create `config_batch81.py` (or next available number):
+1. Create `batches/config_batch81.py` (or next available number):
 
 ```python
 # config_batch81.py
@@ -62,7 +62,7 @@ SEARCH_QUERIES = [
 
 2. Add to `run_overnight.py` at the top import block:
 ```python
-from config_batch81 import SEARCH_QUERIES as B81
+from batches.config_batch81 import SEARCH_QUERIES as B81
 ```
 
 3. Add to the `ALL_QUERIES` line:
@@ -194,7 +194,7 @@ with open('scraper_queue.jsonl', 'w') as f:
 |------|---------|
 | `run_to_1000.py` | Worker: pops queries from queue, scrapes Google Maps, extracts emails, writes to CSV |
 | `run_overnight.py` | Orchestrator: loads queue, spawns workers, monitors, deduplicates |
-| `config_batch55.py` – `config_batch80.py` | Search query lists for the current run |
+| `batches/config_batch55.py` – `config_batch80.py` | Search query lists for the current run |
 | `scraper_queue.jsonl` | Shared work queue (JSONL format) |
 | `MARKETING_LIST.csv` | Output: all collected records (deduped by email) |
 | `requirements.txt` | Python dependencies |
