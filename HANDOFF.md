@@ -146,12 +146,12 @@ pip install -r requirements.txt
 
 ### Workers crash immediately / Chrome fails to start
 - Ensure Google Chrome is installed and up to date
-- Try: `python run_to_1000.py --queue-file scraper_queue.jsonl --worker-id 0` directly to see the error
+- Try: `python worker.py --queue-file scraper_queue.jsonl --worker-id 0` directly to see the error
 - Common cause: Chrome version mismatch. `webdriver-manager` auto-downloads the right chromedriver — just make sure you have internet access
 
 ### Google CAPTCHA / rate limiting
 - Reduce `N_WORKERS` in `run_overnight.py` from 8 to 4
-- Increase `SCROLL_DELAY` and `CLICK_DELAY` in `run_to_1000.py`
+- Increase `SCROLL_DELAY` and `CLICK_DELAY` in `worker.py`
 - Run during off-peak hours (night)
 
 ### Queue file is corrupt
@@ -192,7 +192,7 @@ with open('scraper_queue.jsonl', 'w') as f:
 
 | File | Purpose |
 |------|---------|
-| `run_to_1000.py` | Worker: pops queries from queue, scrapes Google Maps, extracts emails, writes to CSV |
+| `worker.py` | Worker: pops queries from queue, scrapes Google Maps, extracts emails, writes to CSV |
 | `run_overnight.py` | Orchestrator: loads queue, spawns workers, monitors, deduplicates |
 | `batches/config_batch55.py` – `config_batch80.py` | Search query lists for the current run |
 | `scraper_queue.jsonl` | Shared work queue (JSONL format) |

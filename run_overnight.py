@@ -127,7 +127,7 @@ def dedup_csv():
 
 
 def restart_worker(wid: int) -> subprocess.Popen:
-    cmd = [sys.executable, 'run_to_1000.py',
+    cmd = [sys.executable, 'worker.py',
            '--queue-file', QUEUE_FILE,
            '--worker-id',  str(wid)]
     log_path = os.path.join(BASE_DIR, f'worker_{wid}.log')

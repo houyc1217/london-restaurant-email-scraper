@@ -9,10 +9,10 @@ run_overnight.py
   │  loads config_batch*.py → scraper_queue.jsonl
   │  spawns N worker processes
   │
-  ├── run_to_1000.py (worker 0) ─┐
-  ├── run_to_1000.py (worker 1)  │  each worker:
+  ├── worker.py (worker 0) ─┐
+  ├── worker.py (worker 1)  │  each worker:
   ├── ...                        │  1. pops a query from scraper_queue.jsonl (file-locked)
-  └── run_to_1000.py (worker N) ─┘  2. scrolls Google Maps, extracts business info
+  └── worker.py (worker N) ─┘  2. scrolls Google Maps, extracts business info
                                      3. visits business websites in parallel (20 threads)
                                      4. appends to MARKETING_LIST.csv (file-locked)
 ```
@@ -71,7 +71,7 @@ wc -l scraper_queue.jsonl                  # queries remaining
 ### Run a single worker manually (for debugging)
 
 ```bash
-python run_to_1000.py --queue-file scraper_queue.jsonl --worker-id 0
+python worker.py --queue-file scraper_queue.jsonl --worker-id 0
 ```
 
 ## Output Format
@@ -109,7 +109,7 @@ Then add it to the `run_overnight.py` import block and `ALL_QUERIES` list.
 ## Project Structure
 
 ```
-run_to_1000.py              # Worker script (one process per worker)
+worker.py              # Worker script (one process per worker)
 run_overnight.py            # Orchestrator: loads queue, spawns workers, monitors
 batches/                    # Search query batch configs
   config_batch55.py         #   one batch = ~100-200 queries
@@ -124,6 +124,6 @@ _archive/                   # Old/superseded files (kept for reference)
 ## Notes
 
 - **London only**: All queries are scoped to London postcodes and boroughs. Do not add queries for Surrey, Kent, Essex, etc.
-- **Rate limiting**: If Google starts showing CAPTCHAs, reduce `N_WORKERS` in `run_overnight.py` or add longer delays in `run_to_1000.py`.
+- **Rate limiting**: If Google starts showing CAPTCHAs, reduce `N_WORKERS` in `run_overnight.py` or add longer delays in `worker.py`.
 - **Email extraction success rate**: ~25-40% of businesses have a publicly listed email.
 - **Resume-safe**: If the run is interrupted, just re-run `python run_overnight.py`. It detects existing queue items and resumes.

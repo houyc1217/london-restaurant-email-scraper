@@ -10,10 +10,10 @@ Key optimizations vs v1:
   4. Reduced click/back delays
 
 Usage (single):
-    python run_to_1000.py
+    python worker.py --queue-file scraper_queue.jsonl --worker-id 0
 
-Usage (via run_parallel.py – 3 workers):
-    python run_parallel.py
+Usage (via orchestrator):
+    python run_overnight.py
 """
 
 import argparse

@@ -9,12 +9,12 @@ Scrapes Google Maps to build a marketing email list of London restaurants and ca
 
 ## Architecture in One Paragraph
 
-`run_overnight.py` is the orchestrator. It loads search queries from `config_batch*.py` files into a shared JSONL queue (`scraper_queue.jsonl`), then spawns N worker processes (`run_to_1000.py`). Each worker atomically pops a query from the queue using `fcntl` file-locks, scrolls Google Maps in a headless Chrome browser (Selenium), extracts business info, visits business websites in parallel (20 threads, `requests`) to find email addresses, and appends results to `MARKETING_LIST.csv` under an exclusive file lock. The orchestrator polls every 30 s, restarts crashed/stale workers, and runs dedup (by email) every 30 min.
+`run_overnight.py` is the orchestrator. It loads search queries from `config_batch*.py` files into a shared JSONL queue (`scraper_queue.jsonl`), then spawns N worker processes (`worker.py`). Each worker atomically pops a query from the queue using `fcntl` file-locks, scrolls Google Maps in a headless Chrome browser (Selenium), extracts business info, visits business websites in parallel (20 threads, `requests`) to find email addresses, and appends results to `MARKETING_LIST.csv` under an exclusive file lock. The orchestrator polls every 30 s, restarts crashed/stale workers, and runs dedup (by email) every 30 min.
 
 ## Key Files
 
 ```
-run_to_1000.py              Worker script. One process per worker.
+worker.py              Worker script. One process per worker.
 run_overnight.py            Orchestrator. Start this to run everything.
 batches/config_batch55-80.py  Search query batches (active/current).
 batches/__init__.py         Makes batches/ a Python package.
