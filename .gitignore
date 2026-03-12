@@ -1,0 +1,40 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+*.pyc
+__pycache__/
+
+# Output data (large CSV — do not commit, share separately)
+MARKETING_LIST.csv
+MARKETING_LIST.csv.lock
+MARKETING_LIST.csv.tmp
+
+# Queue runtime files
+scraper_queue.jsonl
+scraper_queue.jsonl.lock
+scraper_queue.lock
+
+# Logs
+*.log
+overnight.log
+run_to_1000.log
+dashboard.log
+
+# Worker logs
+worker_*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Chrome Driver
+chromedriver
+chromedriver.exe
